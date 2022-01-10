@@ -75,13 +75,13 @@ public class Calculator {
 		btn.setFont(new Font(null,Font.ROMAN_BASELINE,18));
 		btn.addActionListener(new ActLis());
 		operator_panel.add(btn);
-		btn = new Button("กั");
+		btn = new Button("*");
 		btn.setSize(60, 40);
 		btn.setForeground(Color.BLUE);
 		btn.setFont(new Font(null,Font.ROMAN_BASELINE,18));
 		btn.addActionListener(new ActLis());
 		operator_panel.add(btn);
-		btn = new Button("กา");
+		btn = new Button("/");
 		btn.setSize(60, 40);
 		btn.setForeground(Color.BLUE);
 		btn.setFont(new Font(null,Font.ROMAN_BASELINE,18));
@@ -138,8 +138,8 @@ public class Calculator {
 				switch(token.charAt(0)) {
 				case '+':
 				case '-':
-				case 'กั':
-				case 'กา':
+				case '*':
+				case '/':
 					return true;
 				default:
 					return false;
@@ -157,9 +157,9 @@ public class Calculator {
 				return isp[0]; //12
 			case '-':
 				return isp[1]; //12
-			case 'กั':
+			case '*':
 				return isp[2]; //13
-			case 'กา':
+			case '/':
 				return isp[3]; //13
 			default:
 				return -1;
@@ -247,10 +247,10 @@ public class Calculator {
 					case '-':
 						stack1.push(op1-op2);
 						break;
-					case 'กั':
+					case '*':
 						stack1.push(op1*op2);
 						break;
-					case 'กา':
+					case '/':
 						try {
 							stack1.push(op1/op2);
 						}catch(ArithmeticException e) {
@@ -336,18 +336,18 @@ public class Calculator {
 				infix += '-';
 				label1.setText(infix);
 				break;
-			case "กั":
+			case "*":
 				if(infix.length() == 0) {
 					break;
 				}
-				infix += 'กั';
+				infix += '*';
 				label1.setText(infix);
 				break;
-			case "กา":
+			case "/":
 				if(infix.length() == 0) {
 					break;
 				}
-				infix += 'กา';
+				infix += '/';
 				label1.setText(infix);
 				break;
 			case "Clear":
